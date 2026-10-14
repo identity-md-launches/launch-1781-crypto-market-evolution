@@ -1,0 +1,24 @@
+{
+  "kind": "custom_token",
+  "token": {
+    "contract": "CMEToken",
+    "name": "Crypto Market Evolution",
+    "symbol": "CME",
+    "decimals": 18,
+    "constructorArgs": [],
+    "totalSupply": "1000000000000000000000000000"
+  },
+  "contracts": [],
+  "pool": {
+    "pairedCurrency": "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7",
+    "fee": 12500,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "economics": {
+    "poolBps": 8800,
+    "initialMarketCapWei": "2500000000000000000000",
+    "remainderTo": "0x8308f73729e457eca1134a5c65aa3825ab79921c"
+  },
+  "notes": "CMEToken (src/CMEToken.sol) is a plain, immutable OpenZeppelin v5 ERC-20 named Crypto Market Evolution with symbol CME and 18 decimals. Its constructor takes no arguments and mints the whole supply of 1,000,000,000 CME (1000000000000000000000000000 minor units, the INITIAL_SUPPLY constant) once to msg.sender, which under ProjectFactory.launchCustom is the factory; the factory then forwards the swarm's share to the launch's MerkleDistributor, seeds the pool with 88% of the supply and sends the remainder to economics.remainderTo. The token has no owner, minter, burn endpoint, tax, pause, blacklist, freeze, seizure, proxy, upgrade path, delegatecall or selfdestruct, so nothing can grow the supply or move a holder's balance after launch, and every transfer delivers exactly the amount requested, including the factory's, the distributor's and the PoolManager's. There are no application contracts and no initialization calls. The pool pairs CME with IMD at the launch policy's 1.25% fee and tick spacing 60; initialPrice is provenance only, the deployer derives the opening price from economics.initialMarketCapWei and totalSupply."
+}
